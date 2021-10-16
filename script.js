@@ -1,27 +1,29 @@
-console.log("this is it")
-
 function computerPlay() {
-    const items = ["rock", "paper", "scissors"];
-    randInt = Math.floor(Math.random() * items.length);
-    let itemToPlay = items[randInt];
-    console.log('computer plays ' + itemToPlay)
+    randInt = Math.floor(Math.random() * 3);
     return randInt;
 }
-
-
 function playRound(playerSelection, computerSelection){
+    const items = ["Rock", "Paper", "Scissors"];
     if ((playerSelection + 1) % 3 == computerSelection) {
-        return('Computer wins')
+        return('Computer wins, ' + items[computerSelection] + ' beats ' + items[playerSelection]);
     } else if ( playerSelection == computerSelection) {
-        return('Draw')
+        return('Draw, both play ' + items[computerSelection])
     } else {
-        return('Player wins')
+        return('Player wins, ' + items[playerSelection] + ' beats ' + items[computerSelection]);
+    }
+}
+function game(rounds){
+    const items = ["rock", "paper", "scissors"];
+    for (let i = 0; i < rounds; i++ ){
+        const playerInput = prompt('Enter your choice of Rock, Paper and Scissors: ')
+        const playerSelection = items.indexOf(playerInput.toLowerCase)
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
     }
 }
 
-const playerSelection = 0
-const computerSelection = computerPlay()
+game(5)
 
-console.log(playRound(playerSelection, computerSelection))
+
 
 
