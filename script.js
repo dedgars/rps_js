@@ -15,8 +15,8 @@ function playRound(playerSelection, computerSelection){
 function game(rounds){
     const items = ["rock", "paper", "scissors"];
     for (let i = 0; i < rounds; i++ ){
-        const playerInput = prompt('Enter your choice of Rock, Paper and Scissors: ')
-        const playerSelection = items.indexOf(playerInput.toLowerCase)
+        const playerInput = prompt('Enter your choice of Rock, Paper and Scissors: ').toLowerCase();
+        const playerSelection = items.indexOf(playerInput)
         const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
     }
