@@ -1,7 +1,27 @@
+
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+paper.addEventListener('click', function (e) {
+    game(e.target.id)
+});
+
+rock.addEventListener('click', function (e) {
+    game(e.target.id)
+});
+
+scissors.addEventListener('click', function (e) {
+    game(e.target.id)
+});
+
+
 function computerPlay() {
     randInt = Math.floor(Math.random() * 3);
     return randInt;
 }
+
 function playRound(playerSelection, computerSelection){
     const items = ["Rock", "Paper", "Scissors"];
     if ((playerSelection + 1) % 3 == computerSelection) {
@@ -12,17 +32,17 @@ function playRound(playerSelection, computerSelection){
         return('Player wins, ' + items[playerSelection] + ' beats ' + items[computerSelection]);
     }
 }
-function game(rounds){
+function game(playerInput){
     const items = ["rock", "paper", "scissors"];
-    for (let i = 0; i < rounds; i++ ){
-        const playerInput = prompt('Enter your choice of Rock, Paper and Scissors: ').toLowerCase();
-        const playerSelection = items.indexOf(playerInput)
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+    const playerSelection = items.indexOf(playerInput)
+    const computerSelection = computerPlay();
+    const result = document.createElement('h3');
+    result.style.color = 'blue';
+    result.textContent = playRound(playerSelection, computerSelection);
+    container.appendChild(result);
 }
 
-game(5)
+
 
 
 

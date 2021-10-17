@@ -1,0 +1,17 @@
+
+button {
+    height: 100px;
+    width: 100px;
+}
+
+body {
+    padding: 0;
+    margin: 100px;
+    text-align: center;
+    font-family: serif;
+  }
+
+.container {
+    padding: 10px;
+    display: flex;
+}
