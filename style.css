@@ -1,5 +1,13 @@
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background: rgb(56, 56, 56);
+}
+
 button {
+    border: none;
+    background-color: darkkhaki;
     height: 100px;
     width: 100px;
 }
@@ -11,7 +19,42 @@ body {
     font-family: serif;
   }
 
+.resultContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.resultDiv {
+    margin: 2px;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
+    background: darkkhaki;
+}
+
+.playerName {
+
+    height: 50px;
+    width: 80px;
+    justify-content: center;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
+    color: darkkhaki;
+}
+
+
 .container {
     padding: 10px;
     display: flex;
 }
+
+#infoLine {
+    color: darkkhaki;
+}
+

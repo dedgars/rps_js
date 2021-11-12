@@ -1,49 +1,56 @@
 
+let gameInfoDiv = document.getElementById("gameInfo")
+let infoLinePara = document.createElement("p")
+let infoLineText = document.createTextNode("Let's play!")
+let playerResult = document.getElementById("playerResult")
+let computerResult = document.getElementById("computerResult")
+infoLinePara.setAttribute("id", "infoLine")
+infoLinePara.appendChild(infoLineText)
+gameInfoDiv.appendChild(infoLinePara)
+elements = ["Rock", "Paper", "Scissors"]
 
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
+function checkWin () {
+    if (playerResult.innerText == 5) {
+        infoLinePara.innerText = "Player wins the match"
+        newGame()
+    } else if (computerResult.innerText == 5) { 
+        infoLinePara.innerText = "Computer wins the match"
+        newGame()
+    }}
+    
+function newGame () {
+    playerResult.innerText = 0
+    computerResult.innerText = 0
 
-paper.addEventListener('click', function (e) {
-    game(e.target.id)
-});
-
-rock.addEventListener('click', function (e) {
-    game(e.target.id)
-});
-
-scissors.addEventListener('click', function (e) {
-    game(e.target.id)
-});
+}
 
 
-function computerPlay() {
-    randInt = Math.floor(Math.random() * 3);
-    return randInt;
+
+function computerPlay () {
+    return Math.floor((Math.random() * 3))
 }
 
 function playRound(playerSelection, computerSelection){
-    const items = ["Rock", "Paper", "Scissors"];
     if ((playerSelection + 1) % 3 == computerSelection) {
-        return('Computer wins, ' + items[computerSelection] + ' beats ' + items[playerSelection]);
+        computerResult.innerText = Number(computerResult.innerText) + 1
+        return ('Computer wins, ' + elements[computerSelection] + ' beats ' + elements[playerSelection])
     } else if ( playerSelection == computerSelection) {
-        return('Draw, both play ' + items[computerSelection])
+        return('Draw, both play ' + elements[computerSelection])
     } else {
-        return('Player wins, ' + items[playerSelection] + ' beats ' + items[computerSelection]);
+        playerResult.innerText = Number(playerResult.innerText) + 1
+
+        return('Player wins, ' + elements[playerSelection] + ' beats ' + elements[computerSelection])
     }
 }
-function game(playerInput){
-    const items = ["rock", "paper", "scissors"];
-    const playerSelection = items.indexOf(playerInput)
-    const computerSelection = computerPlay();
-    const result = document.createElement('h3');
-    result.style.color = 'blue';
-    result.textContent = playRound(playerSelection, computerSelection);
-    container.appendChild(result);
-}
 
-
-
-
+document.querySelectorAll('.element').forEach(item => {
+    item.addEventListener('click', event => {
+        infoLinePara.innerText = ""
+        let playerSelection = elements.indexOf(item.innerText)
+        let computerSelection = computerPlay()
+        infoLinePara.innerText = playRound(playerSelection, computerSelection)
+        checkWin()
+    })
+})
 
 
